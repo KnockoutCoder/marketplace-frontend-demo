@@ -270,9 +270,9 @@ To use a different backend, simply update the `API_BASE` constant in `frontend/a
 
 ## 📞 Support
 
-For questions about API integration, check the API endpoints section above or examine the code in `frontend/app.js` where all API calls are documented with comments.
+For questions about API integration, check the API endpoints section above or examine the code in `frontend/app.js` where all API calls are documented with comments. You may also reach me at homebasedkc@gmail.com.
 
 ---
 
-**Built with ❤️ to demonstrate frontend-backend integration**
+**Built for my bootcamp Node.js, Express, and MongoDB project to demonstrate frontend-backend integration**
 
