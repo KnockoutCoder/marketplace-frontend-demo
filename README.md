@@ -117,7 +117,7 @@ This frontend communicates with the backend through **11 REST endpoints**:
 > **Note**: The backend API actually has 12 endpoints total, including `GET /orders/:id` to fetch a single order by ID. However, this endpoint was not implemented in the frontend, so the frontend currently uses 11 of the 12 available endpoints.
 
 ### Total API Calls
-The frontend makes **37 API calls** throughout the application.
+The frontend makes **37 API calls** throughout the application. See [API_CALLS_LIST.md](./API_CALLS_LIST.md) for a complete breakdown of all API calls with their locations and purposes.
 
 ## 📋 API Contract
 
