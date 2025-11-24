@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KC Mart</title>
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="storefront.css">
+</head>
+<body>
+    <!-- STOREFRONT VIEW (Initial View) -->
+    <div id="storefrontView" class="storefront-view">
+        <header class="storefront-header" id="storefrontHeader">
+            <nav class="storefront-nav storefront-container">
+                <a href="#" class="storefront-logo">
+                    <img src="images/KCMart.png" alt="KC Mart" class="storefront-logo-img">
+                </a>
+                <div class="storefront-nav-menu" id="storefrontNavMenu">
+                    <ul class="storefront-nav-list">
+                        <li class="storefront-nav-item"><a href="#" class="storefront-nav-link active-link">Home</a></li>
+                        <li class="storefront-nav-item"><a href="#" class="storefront-nav-link" id="storefrontShopLink">Shop</a></li>
+                        <li class="storefront-nav-item" style="position: relative;">
+                            <a href="#" class="storefront-nav-link" id="storefrontCategoriesLink">Categories</a>
+                            <div class="storefront-categories-menu" id="storefrontCategoriesMenu">
+                                <ul id="storefrontCategoryMenuList">
+                                    <!-- Categories will be populated dynamically -->
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="storefront-nav-close" id="storefrontNavClose">
+                        <i class="bx bx-x"></i>
+                    </div>
+                </div>
+                <div class="storefront-nav-btns">
+                    <div class="storefront-welcome-message" id="storefrontWelcomeMessage" style="display: none;">
+                        <span>Welcome, </span><span id="storefrontBuyerName"></span>
+                    </div>
+                    <div class="storefront-profile-wrapper">
+                        <a href="#" class="storefront-profile-icon" id="storefrontProfileIcon" title="Account"><i class='bx bx-user'></i></a>
+                        <div class="storefront-profile-menu" id="storefrontProfileMenu">
+                            <ul>
+                                <li><a href="#" id="storefrontLoginBuyer">Log In as Buyer</a></li>
+                                <li><a href="dashboard.html" id="storefrontLoginSeller">Log In as Seller</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="storefront-nav-shop" id="storefrontCartShop"><i class='bx bx-shopping-bag'></i><span class="storefront-cart-badge" id="storefrontCartBadge" style="display: none;">0</span></div>
+                    <div class="storefront-nav-toggle" id="storefrontNavToggle"><i class='bx bx-grid-alt'></i></div>
+                </div>
+            </nav>
+        </header>
+
+        <main class="storefront-main">
+            <!-- Hero Slider -->
+            <section class="storefront-home container">
+                <div class="swiper storefront-home-swiper">
+                    <div class="swiper-wrapper" id="storefrontHeroSlides">
+                        <!-- Slides will be populated dynamically -->
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </section>
+
+            <!-- Discount Banner -->
+            <section class="storefront-discount storefront-section">
+                <div class="storefront-discount-container storefront-container storefront-grid">
+                    <img src="https://i.postimg.cc/K8d4FZPW/discount.png" alt="" class="storefront-discount-img">
+                    <div class="storefront-discount-data">
+                        <h2 class="storefront-discount-title">50% Discount <br> On new Products</h2>
+                        <a href="#" class="storefront-button" id="storefrontDiscountBtn">Shop Now</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- New Arrivals -->
+            <section class="storefront-new storefront-section">
+                <h2 class="storefront-section-title">New Arrivals</h2>
+                <div class="storefront-new-container storefront-container">
+                    <div class="swiper storefront-new-swiper">
+                        <div class="swiper-wrapper" id="storefrontNewArrivals">
+                            <!-- Products will be populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- All Products Grid -->
+            <section class="storefront-products storefront-section">
+                <h2 class="storefront-section-title">All Products</h2>
+                <div class="storefront-products-container storefront-container">
+                    <div id="storefrontProductsGrid" class="storefront-products-grid">
+                        <!-- Products will be populated dynamically -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- How to Order -->
+            <section class="storefront-steps storefront-section storefront-container">
+                <div class="storefront-steps-bg">
+                    <h2 class="storefront-section-title">How to order products <br> from Marketplace</h2>
+                    <div class="storefront-steps-container storefront-grid">
+                        <div class="storefront-steps-card">
+                            <div class="storefront-steps-card-number">01</div>
+                            <h3 class="storefront-steps-card-title">Choose Products</h3>
+                            <p class="storefront-steps-card-description">We have several varieties you can choose from</p>
+                        </div>
+                        <div class="storefront-steps-card">
+                            <div class="storefront-steps-card-number">02</div>
+                            <h3 class="storefront-steps-card-title">Place an Order</h3>
+                            <p class="storefront-steps-card-description">Once your order is set, we move to the next step which is shipping</p>
+                        </div>
+                        <div class="storefront-steps-card">
+                            <div class="storefront-steps-card-number">03</div>
+                            <h3 class="storefront-steps-card-title">Get Order Delivered</h3>
+                            <p class="storefront-steps-card-description">Our delivery process is easy, you receive the order direct to your home</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Newsletter -->
+            <section class="storefront-newsletter storefront-section">
+                <div class="storefront-newsletter-container storefront-container">
+                    <h2 class="storefront-section-title">Our Newsletter</h2>
+                    <p class="storefront-newsletter-description">Promotion new products and sales. Directly to your inbox</p>
+                    <form action="" class="storefront-newsletter-form">
+                        <input type="text" placeholder="Enter your email" class="storefront-newsletter-input">
+                        <button class="storefront-button">Subscribe</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Buyer Cart Section (Hidden by default, shown when logged in as buyer) -->
+            <section id="storefrontBuyerCart" class="storefront-section hidden" style="background: var(--storefront-container-color); padding: 2rem; border-radius: 1rem; margin: 2rem auto; max-width: 968px;">
+                <h2 class="storefront-section-title">My Cart</h2>
+                <div id="storefrontCartItems" class="storefront-cart-items"></div>
+                <div class="storefront-cart-controls" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding: 20px; background: var(--storefront-body-color); border-radius: 10px;">
+                    <div id="storefrontCartTotal" style="font-size: 20px; font-weight: 600; color: var(--storefront-title-color);">Total: $0.00</div>
+                    <button id="storefrontPlaceOrderBtn" class="storefront-button" disabled>Place Order</button>
+                </div>
+            </section>
+
+            <!-- Buyer Orders Section (Hidden by default, shown when logged in as buyer) -->
+            <section id="storefrontBuyerOrders" class="storefront-section hidden" style="background: var(--storefront-container-color); padding: 2rem; border-radius: 1rem; margin: 2rem auto; max-width: 968px;">
+                <h2 class="storefront-section-title">My Orders</h2>
+                <div id="storefrontOrdersList" class="storefront-orders-list"></div>
+            </section>
+        </main>
+
+        <footer class="storefront-footer storefront-section">
+            <div class="storefront-footer-container storefront-container storefront-grid">
+                <div class="storefront-footer-content">
+                    <a href="#" class="storefront-footer-logo"><img src="images/KCMart.png" alt="KC Marketplace" class="storefront-footer-logo-img"></a>
+                    <p class="storefront-footer-description">Enjoy the biggest sale <br> of your life</p>
+                    <ul class="storefront-footer-social">
+                        <a href="#" class="storefront-footer-social-link"><i class="ri-facebook-fill"></i></a>
+                        <a href="#" class="storefront-footer-social-link"><i class="ri-instagram-line"></i></a>
+                        <a href="#" class="storefront-footer-social-link"><i class="ri-twitter-x-line"></i></a>
+                    </ul>
+                </div>
+                <div class="storefront-footer-content">
+                    <h3 class="storefront-footer-title">About</h3>
+                    <ul class="storefront-footer-links">
+                        <li><a href="#" class="storefront-footer-link">About us</a></li>
+                        <li><a href="#" class="storefront-footer-link">Customer Support</a></li>
+                        <li><a href="#" class="storefront-footer-link">Support Center</a></li>
+                    </ul>
+                </div>
+                <div class="storefront-footer-content">
+                    <h3 class="storefront-footer-title">Our Services</h3>
+                    <ul class="storefront-footer-links">
+                        <li><a href="#" class="storefront-footer-link">Shop</a></li>
+                        <li><a href="#" class="storefront-footer-link">Discounts</a></li>
+                        <li><a href="#" class="storefront-footer-link">Shipping Mode</a></li>
+                    </ul>
+                </div>
+                <div class="storefront-footer-content">
+                    <h3 class="storefront-footer-title">Our Company</h3>
+                    <ul class="storefront-footer-links">
+                        <li><a href="#" class="storefront-footer-link">Register</a></li>
+                        <li><a href="#" class="storefront-footer-link">Contact Us</a></li>
+                        <li><a href="#" class="storefront-footer-link">About Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <span class="storefront-footer-copy">&#169; <a href="">KC Mart</a>. All rights reserved</span>
+        </footer>
+
+        <a href="#" class="storefront-scrollUp" id="storefrontScrollUp"><i class="bx bx-up-arrow-alt"></i></a>
+    </div>
+    <!-- END STOREFRONT VIEW -->
+
+    <!-- Buyer Profile Modal -->
+    <div id="storefrontProfileModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>My Profile</h2>
+                <button class="modal-close" id="storefrontCloseProfileModal">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="storefrontProfileModalInfo" class="profile-info"></div>
+                <form id="storefrontProfileModalForm" class="form-container" style="margin-top: 20px;">
+                    <div class="form-group">
+                        <label for="storefrontModalUserName">Name:</label>
+                        <input type="text" id="storefrontModalUserName" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="storefrontModalUserEmail">Email:</label>
+                        <input type="email" id="storefrontModalUserEmail" placeholder="Email (optional)">
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn-cancel" id="storefrontCancelProfileModal">Cancel</button>
+                        <button type="submit" class="btn-submit">Update Profile</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div id="storefrontProductDetailModal" class="modal">
+        <div class="modal-content" style="max-width: 900px;">
+            <div class="modal-header">
+                <h2 id="storefrontProductDetailTitle">Product Details</h2>
+                <button class="modal-close" id="storefrontCloseProductDetailModal">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
+            <div class="modal-body" id="storefrontProductDetailBody" style="padding: 2rem;">
+                <!-- Product details will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

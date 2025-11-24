@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KC Mart Portal</title>
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+        <a href="index.html" class="brand">
+            <img src="images/KCMart.png" alt="KC Mart Portal" class="brand-logo">
+        </a>
+        <ul class="side-menu top">
+            <li data-section="sellerSection" class="role-specific seller-only hidden">
+                <a href="#">
+                    <i class='bx bxs-shopping-bag-alt bx-sm'></i>
+                    <span class="text">My Store</span>
+                </a>
+            </li>
+            <li data-section="adminDashboard" class="role-specific admin-only hidden">
+                <a href="#">
+                    <i class='bx bxs-dashboard bx-sm'></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li data-section="adminSection" class="role-specific admin-only hidden">
+                <a href="#">
+                    <i class='bx bxs-cog bx-sm'></i>
+                    <span class="text">Admin Tools</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="side-menu bottom">
+        </ul>
+    </section>
+    <!-- SIDEBAR -->
+
+    <!-- CONTENT -->
+    <section id="content">
+        <!-- NAVBAR -->
+        <nav>
+            <div style="display: flex; align-items: center; gap: 24px;">
+                <i class='bx bx-menu bx-sm' id="sidebarToggle"></i>
+                <input type="checkbox" class="checkbox" id="switch-mode" hidden />
+                <label class="swith-lm" for="switch-mode" title="Toggle Dark/Light Mode">
+                    <i class="bx bxs-moon"></i>
+                    <i class="bx bx-sun"></i>
+                    <div class="ball"></div>
+                </label>
+            </div>
+            <div style="display: flex; align-items: center; gap: 24px;">
+                <!-- Role Selector -->
+                <div class="role-selector-nav">
+                    <a href="#" class="nav-link" id="roleSelectLink">View As</a>
+                </div>
+                <div class="role-select-menu" id="roleSelectMenu">
+                    <ul id="roleSelectOptions">
+                        <!-- Options will be populated dynamically -->
+                    </ul>
+                </div>
+                <!-- Profile Menu -->
+                <a href="#" class="profile" id="profileIcon">
+                    <i class='bx bxs-user-circle' style="font-size: 36px; color: var(--blue);"></i>
+                </a>
+                <div class="profile-menu" id="profileMenu">
+                    <ul>
+                        <li><a href="#" id="profileLink">My Profile</a></li>
+                        <li><a href="index.html" class="back-to-store">Back to Store</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- NAVBAR -->
+
+        <!-- MAIN -->
+        <main>
+            <!-- Welcome Screen (Visible when no role is selected) -->
+            <section id="welcomeSection" class="section">
+                <div class="welcome-card">
+                    <h1>👋 Welcome to KC Mart Admin & Seller Portal</h1>
+                    <p class="subtitle">This is a demo environment - no login required (for now!).</p>
+                    
+                    <div class="welcome-content">
+                        <h2>How to Get Started</h2>
+                        <p>Use the <strong>"View As"</strong> menu in the top-right to switch between Admin and Seller roles.</p>
+                        
+                        <div class="welcome-roles">
+                            <div class="welcome-role-card">
+                                <div class="welcome-role-icon">👤</div>
+                                <h3>Admin</h3>
+                                <p>As an admin, you can:</p>
+                                <ul>
+                                    <li>Manage all <strong>users</strong> (buyers, sellers, and admins)</li>
+                                    <li>View and manage all <strong>products</strong></li>
+                                    <li>View all <strong>orders</strong></li>
+                                    <li>Inspect the marketplace from a platform-wide perspective</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="welcome-role-card">
+                                <div class="welcome-role-icon">🏪</div>
+                                <h3>Seller</h3>
+                                <p>As a seller, you can:</p>
+                                <ul>
+                                    <li>Create, edit, and delete your <strong>products</strong></li>
+                                    <li>Manage your <strong>store information</strong></li>
+                                    <li>View the orders placed for your items</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="welcome-role-card welcome-role-card-buyer">
+                                <div class="welcome-role-icon">🛒</div>
+                                <h3>⚠️ Buyer ⚠️</h3>
+                                <p>Buyers don't log in from here - they browse the <strong>storefront</strong> side of the marketplace.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="welcome-footer">
+                            <p class="footer-note">✨ This is a sandbox - feel free to experiment!</p>
+                            <p class="footer-tip">💡 <strong>Tip:</strong> Because this is a demo, all data resets when you refresh unless you connect it to your backend database. Perfect for experimenting!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Seller Product Management (Visible to Sellers Only) -->
+            <section id="sellerSection" class="section hidden">
+                <div class="head-title">
+                    <div class="left">
+                        <h1>My Store</h1>
+                        <ul class="breadcrumb">
+                            <li><a href="#">Home</a></li>
+                            <li><i class='bx bx-chevron-right'></i></li>
+                            <li><a class="active" href="#">My Store</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Seller Toolbar (My Products, Categories, Search, Refresh) -->
+                <div class="seller-toolbar" style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem; background: var(--light); border-radius: 10px; margin: 1rem 0;">
+                    <button class="btn-download" id="sellerMyProductsBtn" style="margin-right: auto;">
+                        <i class='bx bxs-package'></i>
+                        <span class="text">My Products</span>
+                    </button>
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="position: relative;">
+                            <a href="#" class="nav-link" id="sellerCategoriesLink">Categories</a>
+                            <div class="categories-menu" id="sellerCategoriesMenu">
+                                <ul id="sellerCategoryMenuList">
+                                    <!-- Categories will be populated dynamically -->
+                                </ul>
+                            </div>
+                        </div>
+                        <form action="#" id="sellerSearchForm">
+                            <div class="form-input">
+                                <input type="search" id="sellerProductSearch" placeholder="Search products...">
+                                <button type="submit"><i class='bx bx-search'></i></button>
+                            </div>
+                        </form>
+                        <button class="btn-download" id="refreshSellerProducts">
+                            <i class='bx bx-refresh'></i>
+                            <span class="text">Refresh</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Seller Tabs -->
+                <div class="buyer-tabs">
+                    <button class="tab-btn active" data-tab="seller-products">
+                        <i class='bx bxs-package'></i>
+                        <span>My Products</span>
+                    </button>
+                    <button class="tab-btn" data-tab="seller-orders">
+                        <i class='bx bxs-cart'></i>
+                        <span>My Orders</span>
+                    </button>
+                    <button class="tab-btn" data-tab="seller-create">
+                        <i class='bx bx-plus-circle'></i>
+                        <span>Create New Product</span>
+                    </button>
+                </div>
+
+                <!-- Tab Content -->
+                <!-- My Products Section -->
+                <div id="seller-products" class="tab-content active">
+                    <div class="table-data">
+                        <div id="sellerProductsList" class="products-grid"></div>
+                    </div>
+                </div>
+
+                <!-- My Orders Tab -->
+                <div id="seller-orders" class="tab-content">
+                    <div class="table-data">
+                        <div id="sellerOrdersList" class="orders-list"></div>
+                    </div>
+                </div>
+
+                <!-- Create Product Tab -->
+                <div id="seller-create" class="tab-content">
+                    <div class="table-data">
+                        <div class="head">
+                            <h3>Create New Product</h3>
+                        </div>
+                        <form id="createProductForm" class="form-container">
+                            <div class="form-group">
+                                <label for="productTitle">Product Title:</label>
+                                <input type="text" id="productTitle" placeholder="Product Title" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="productDescription">Description:</label>
+                                <textarea id="productDescription" placeholder="Description" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="productImage">Product Image:</label>
+                                <div style="display: flex; flex-direction: column; gap: 10px;">
+                                    <input type="file" id="productImageFile" accept="image/*" style="margin-bottom: 10px;">
+                                    <span style="text-align: center; color: var(--dark-grey);">OR</span>
+                                    <input type="url" id="productImageUrl" placeholder="Enter image URL (optional)">
+                                </div>
+                                <div id="productImagePreview" style="margin-top: 10px; display: none;">
+                                    <img id="productImagePreviewImg" src="" alt="Preview" style="max-width: 200px; max-height: 200px; border-radius: 8px; border: 1px solid var(--grey);">
+                                </div>
+                            </div>
+                            <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
+                                <div>
+                                    <label for="productPrice">Price:</label>
+                                    <input type="number" id="productPrice" placeholder="Price" step="0.01" required>
+                                </div>
+                                <div>
+                                    <label for="productStock">Stock:</label>
+                                    <input type="number" id="productStock" placeholder="Stock" required>
+                                </div>
+                                <div>
+                                    <label for="productCategory">Category:</label>
+                                    <input type="text" id="productCategory" placeholder="Category" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-submit">Create Product</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Admin Dashboard (Visible to Admin Only) -->
+            <section id="adminDashboard" class="section hidden">
+                <div class="head-title">
+                    <div class="left">
+                        <h1>Admin Dashboard</h1>
+                        <ul class="breadcrumb">
+                            <li><a href="#">Home</a></li>
+                            <li><i class='bx bx-chevron-right'></i></li>
+                            <li><a class="active" href="#">Dashboard</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <ul class="box-info">
+                    <li>
+                        <i class='bx bxs-shopping-bag'></i>
+                        <span class="text">
+                            <h3 id="totalProducts">0</h3>
+                            <p>Total Products</p>
+                        </span>
+                    </li>
+                    <li>
+                        <i class='bx bxs-group'></i>
+                        <span class="text">
+                            <h3 id="totalUsers">0</h3>
+                            <p>Total Users</p>
+                        </span>
+                    </li>
+                    <li>
+                        <i class='bx bxs-cart'></i>
+                        <span class="text">
+                            <h3 id="totalOrders">0</h3>
+                            <p>Total Orders</p>
+                        </span>
+                    </li>
+                </ul>
+
+                <div class="table-data">
+                    <div class="order">
+                        <div class="head">
+                            <h3>Recent Orders</h3>
+                            <i class='bx bx-search'></i>
+                            <i class='bx bx-filter'></i>
+                        </div>
+                        <div class="order-filters">
+                            <input type="text" id="searchOrderUser" placeholder="Search by user...">
+                            <select id="filterOrderStatus">
+                                <option value="all">All</option>
+                                <option value="pending">Pending</option>
+                                <option value="paid">Paid</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Img</th>
+                                    <th>User</th>
+                                    <th>Date Order</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentOrdersTableBody">
+                                <!-- Recent orders will be populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="todo">
+                        <div class="head">
+                            <h3>Recently Added Users</h3>
+                            <i class='bx bx-plus icon'></i>
+                        </div>
+                        <div class="todo-filters">
+                            <button onclick="filterRecentUsers('all')">All</button>
+                            <button onclick="filterRecentUsers('buyer')" class="completed">Buyers</button>
+                            <button onclick="filterRecentUsers('seller')" class="pending">Sellers</button>
+                            <button onclick="filterRecentUsers('admin')" class="admin-filter">Admin</button>
+                        </div>
+                        <ul class="todo-list" id="recentUsersList">
+                            <!-- Recent users will be populated dynamically -->
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Admin Tools (Visible to Admin Only) -->
+            <section id="adminSection" class="section hidden">
+                <div class="head-title">
+                    <div class="left">
+                        <h1>Admin Tools</h1>
+                        <ul class="breadcrumb">
+                            <li><a href="#">Home</a></li>
+                            <li><i class='bx bx-chevron-right'></i></li>
+                            <li><a class="active" href="#">Admin Tools</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Admin Tabs -->
+                <div class="buyer-tabs">
+                    <button class="tab-btn active" data-tab="admin-users">
+                        <i class='bx bxs-group'></i>
+                        <span>User Management</span>
+                    </button>
+                    <button class="tab-btn" data-tab="admin-products">
+                        <i class='bx bxs-shopping-bag'></i>
+                        <span>All Products</span>
+                    </button>
+                    <button class="tab-btn" data-tab="admin-orders">
+                        <i class='bx bxs-cart'></i>
+                        <span>All Orders</span>
+                    </button>
+                </div>
+
+                <!-- Admin Toolbar (All Products, Categories, Search, Refresh) - Only visible for Products tab -->
+                <div class="admin-toolbar" id="adminToolbar" style="display: none; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem; background: var(--light); border-radius: 10px; margin: 1rem 0;">
+                    <button class="btn-download" id="adminAllProductsBtn" style="margin-right: auto;">
+                        <i class='bx bxs-shopping-bag'></i>
+                        <span class="text">All Products</span>
+                    </button>
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="position: relative;">
+                            <a href="#" class="nav-link" id="adminCategoriesLink">Categories</a>
+                            <div class="categories-menu" id="adminCategoriesMenu">
+                                <ul id="adminCategoryMenuList">
+                                    <!-- Categories will be populated dynamically -->
+                                </ul>
+                            </div>
+                        </div>
+                        <form action="#" id="adminSearchForm">
+                            <div class="form-input">
+                                <input type="search" id="adminProductSearch" placeholder="Search products...">
+                                <button type="submit"><i class='bx bx-search'></i></button>
+                            </div>
+                        </form>
+                        <button class="btn-download" id="refreshAllProducts">
+                            <i class='bx bx-refresh'></i>
+                            <span class="text">Refresh</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Admin Orders Toolbar (All Orders, Refresh) - Only visible for Orders tab -->
+                <div class="admin-orders-toolbar" id="adminOrdersToolbar" style="display: none; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem; background: var(--light); border-radius: 10px; margin: 1rem 0;">
+                    <button class="btn-download" id="adminAllOrdersBtn" style="margin-right: auto;">
+                        <i class='bx bxs-cart'></i>
+                        <span class="text">All Orders</span>
+                    </button>
+                    <button class="btn-download" id="refreshAllOrders">
+                        <i class='bx bx-refresh'></i>
+                        <span class="text">Refresh</span>
+                    </button>
+                </div>
+
+                <!-- Admin Users Toolbar (All Users, Create User, Refresh) - Only visible for User Management tab -->
+                <div class="admin-users-toolbar" id="adminUsersToolbar" style="display: none; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem; background: var(--light); border-radius: 10px; margin: 1rem 0;">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <button class="btn-download" id="adminAllUsersBtn">
+                            <i class='bx bxs-user-detail'></i>
+                            <span class="text">All Users</span>
+                        </button>
+                        <button class="btn-download" id="adminCreateUserBtn">
+                            <i class='bx bx-user-plus'></i>
+                            <span class="text">Create User</span>
+                        </button>
+                    </div>
+                    <button class="btn-download" id="refreshAllUsers">
+                        <i class='bx bx-refresh'></i>
+                        <span class="text">Refresh</span>
+                    </button>
+                </div>
+
+                <!-- Tab Content -->
+                <!-- User Management Tab -->
+                <div id="admin-users" class="tab-content active">
+                    <!-- All Users Section -->
+                    <div id="users-list" class="subtab-content active">
+                        <div class="table-data">
+                            <div id="adminUsersList" class="users-grid"></div>
+                        </div>
+                    </div>
+
+                    <!-- Create User Section -->
+                    <div id="users-create" class="subtab-content">
+                        <div class="table-data">
+                            <form id="createUserForm" class="form-container">
+                                <div class="form-group">
+                                    <label for="newUserName">Name:</label>
+                                    <input type="text" id="newUserName" placeholder="Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="newUserEmail">Email:</label>
+                                    <input type="email" id="newUserEmail" placeholder="Email (optional)">
+                                </div>
+                                <div class="form-group">
+                                    <label for="newUserRole">Role:</label>
+                                    <select id="newUserRole" required>
+                                        <option value="">Select Role...</option>
+                                        <option value="buyer">Buyer</option>
+                                        <option value="seller">Seller</option>
+                                        <option value="admin">Admin</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn-submit">Create User</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- All Products Section (Shown when All Products button is clicked) -->
+                <div id="admin-products" class="tab-content">
+                    <div class="table-data">
+                        <div id="adminProductsList" class="products-grid"></div>
+                    </div>
+                </div>
+
+                <!-- All Orders Tab -->
+                <div id="admin-orders" class="tab-content">
+                    <div class="table-data">
+                        <div id="adminOrdersList" class="orders-list"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- MAIN -->
+    </section>
+    <!-- CONTENT -->
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>My Profile</h2>
+                <button class="modal-close" id="closeProfileModal">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="profileModalInfo" class="profile-info"></div>
+                <form id="profileModalForm" class="form-container" style="margin-top: 20px;">
+                    <div class="form-group">
+                        <label for="modalUserName">Name:</label>
+                        <input type="text" id="modalUserName" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="modalUserEmail">Email:</label>
+                        <input type="email" id="modalUserEmail" placeholder="Email (optional)">
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn-cancel" id="cancelProfileModal">Cancel</button>
+                        <button type="submit" class="btn-submit">Update Profile</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Product Modal -->
+    <div id="editProductModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Product</h2>
+                <button class="modal-close" id="closeEditProductModal">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editProductModalForm" class="form-container">
+                    <div class="form-group">
+                        <label for="editProductTitle">Product Title:</label>
+                        <input type="text" id="editProductTitle" placeholder="Product Title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editProductDescription">Description:</label>
+                        <textarea id="editProductDescription" placeholder="Description" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="editProductImage">Product Image:</label>
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <input type="file" id="editProductImageFile" accept="image/*" style="margin-bottom: 10px;">
+                            <span style="text-align: center; color: var(--dark-grey);">OR</span>
+                            <input type="url" id="editProductImageUrl" placeholder="Enter image URL (optional)">
+                        </div>
+                        <div id="editProductImagePreview" style="margin-top: 10px; display: none;">
+                            <img id="editProductImagePreviewImg" src="" alt="Preview" style="max-width: 200px; max-height: 200px; border-radius: 8px; border: 1px solid var(--grey);">
+                        </div>
+                    </div>
+                    <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
+                        <div>
+                            <label for="editProductPrice">Price:</label>
+                            <input type="number" id="editProductPrice" placeholder="Price" step="0.01" required>
+                        </div>
+                        <div>
+                            <label for="editProductStock">Stock:</label>
+                            <input type="number" id="editProductStock" placeholder="Stock" required>
+                        </div>
+                        <div>
+                            <label for="editProductCategory">Category:</label>
+                            <input type="text" id="editProductCategory" placeholder="Category" required>
+                        </div>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn-cancel" id="cancelEditProductModal">Cancel</button>
+                        <button type="submit" class="btn-submit">Update Product</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
